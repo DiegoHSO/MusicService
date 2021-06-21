@@ -50,6 +50,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
 
     
 
