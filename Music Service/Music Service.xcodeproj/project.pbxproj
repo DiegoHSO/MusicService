@@ -16,6 +16,7 @@
 		F1F7FB1B267C38D1000CC558 /* MusicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB1A267C38D1000CC558 /* MusicService.swift */; };
 		F1F7FB1D267C38D9000CC558 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = F1F7FB1C267C38D8000CC558 /* data.json */; };
 		F1F7FB1F267D14B5000CC558 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB1E267D14B5000CC558 /* LibraryViewController.swift */; };
+		F1F7FB212680FDE9000CC558 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB202680FDE9000CC558 /* LibraryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F1F7FB1A267C38D1000CC558 /* MusicService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicService.swift; sourceTree = "<group>"; };
 		F1F7FB1C267C38D8000CC558 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		F1F7FB1E267D14B5000CC558 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		F1F7FB202680FDE9000CC558 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				F1F7FB08267C3340000CC558 /* SceneDelegate.swift */,
 				F1F7FB0A267C3340000CC558 /* ViewController.swift */,
 				F1F7FB0C267C3340000CC558 /* Main.storyboard */,
+				F1F7FB202680FDE9000CC558 /* LibraryTableViewCell.swift */,
 				F1F7FB1E267D14B5000CC558 /* LibraryViewController.swift */,
 				F1F7FB1C267C38D8000CC558 /* data.json */,
 				F1F7FB1A267C38D1000CC558 /* MusicService.swift */,
@@ -152,6 +155,7 @@
 				F1F7FB07267C3340000CC558 /* AppDelegate.swift in Sources */,
 				F1F7FB09267C3340000CC558 /* SceneDelegate.swift in Sources */,
 				F1F7FB1B267C38D1000CC558 /* MusicService.swift in Sources */,
+				F1F7FB212680FDE9000CC558 /* LibraryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

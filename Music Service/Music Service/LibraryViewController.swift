@@ -37,16 +37,16 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "library-detail", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "library-detail", for: indexPath) as! LibraryTableViewCell
         
         let musicItem = collections[indexPath.row]
         
-        cell.textLabel?.text = musicItem.title
-        cell.detailTextLabel?.text = musicItem.type == .album ?
+        cell.songLabel.text = musicItem.title
+        cell.songDetailLabel.text = musicItem.type == .album ?
             "Album · \(musicItem.mainPerson)" :
             "Playlist · \(musicItem.mainPerson)"
         
-        cell.imageView?.image = UIImage(named: musicItem.id)
+        cell.coverImage.image = UIImage(named: musicItem.id)
         
         return cell
     }
