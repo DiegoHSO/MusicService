@@ -9,9 +9,10 @@ import UIKit
 
 class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var collection: MusicCollection?
-    
+    var collection: MusicCollection?
+        
     @IBOutlet weak var albumSongsTableView: UITableView!
+    @IBOutlet var infoButton: UIBarButtonItem!
     
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var albumArtistLabel: UILabel!
@@ -21,38 +22,38 @@ class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSo
     
     
     override func viewDidLoad() {
+                
+        super.viewDidLoad()
         
-        albumTitleLabel.text = collection?.title
-        albumArtistLabel.text = "Album by \(collection?.mainPerson ?? "")"
-        albumSongsNumberLabel.text = "\(collection?.musics.count ?? 0) songs"
+        if collection?.type == .playlist {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+        
+        albumSongsTableView.dataSource = self
+        albumSongsTableView.delegate = self
+        self.navigationItem.title = collection?.title
+        albumArtistLabel.text = collection?.mainPerson
+        albumCover.image = UIImage(named: collection?.id ?? "")
         
         let dateFormatter = DateFormatter()
         
-        albumReleaseDateLabel.text = "Released \(dateFormatter.string(from: collection!.referenceDate))"
+        albumReleaseDateLabel.text = "Released \(dateFormatter.string(from: collection?.referenceDate ?? Date()))"
+        albumSongsNumberLabel.text = "\(collection?.musics.count ?? 0) songs"
+        albumTitleLabel.text = collection?.title
         
-        
-        
-        super.viewDidLoad()
-        
-        do {
-            self.collection = musicService?.loadLibrary() ?? []
-        } catch {
-            print(error)
-        }
-        albumSongsTableView.dataSource = self
-        albumSongsTableView.delegate = self
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collection.musics.count
+        return collection!.musics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "album_playlist_detail-item", for: indexPath) as! Album_Playlist_Details_TableViewCell
         
-        let musicItem = collection.musics[indexPath.row]
+        let musicItem = collection!.musics[indexPath.row]
         
         cell.songTitle.text = musicItem.title
         cell.albumArtist.text = "\(musicItem.artist)"
