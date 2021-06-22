@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Album_Playlist_Details_TableViewCell: UITableViewCell {
+class AlbumPlaylistDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var songTitle: UILabel!

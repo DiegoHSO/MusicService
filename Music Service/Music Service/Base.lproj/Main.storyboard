@@ -97,7 +97,7 @@
         <!--After Hours-->
         <scene sceneID="j8k-eG-51A">
             <objects>
-                <viewController id="nYr-xs-sHD" customClass="Album_Playlist_Details_ViewController" customModule="Music_Service" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nYr-xs-sHD" customClass="AlbumPlaylistDetailsViewController" customModule="Music_Service" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oGU-cP-Yv0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +106,7 @@
                                 <rect key="frame" x="16" y="246" width="398" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="album_playlist_detail-item" rowHeight="62" id="asJ-me-PBM" customClass="Album_Playlist_Details_TableViewCell" customModule="Music_Service" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="album_playlist_detail-item" rowHeight="62" id="asJ-me-PBM" customClass="AlbumPlaylistDetailsTableViewCell" customModule="Music_Service" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="398" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="asJ-me-PBM" id="cME-kG-iIh">
@@ -231,6 +231,9 @@
                     <navigationItem key="navigationItem" title="After Hours" largeTitleDisplayMode="never" id="Eqa-qU-a7l">
                         <barButtonItem key="rightBarButtonItem" title="info-item" image="info.circle" catalog="system" id="2AJ-DR-8GW">
                             <color key="tintColor" systemColor="systemGreenColor"/>
+                            <connections>
+                                <action selector="infoButton:" destination="nYr-xs-sHD" id="VnA-cn-4ee"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -241,7 +244,7 @@
                         <outlet property="albumSongsTableView" destination="lTd-bV-B1G" id="4q3-r0-oN4"/>
                         <outlet property="albumTitleLabel" destination="Q0Z-BX-9UY" id="VEV-Vf-hB6"/>
                         <outlet property="infoButton" destination="2AJ-DR-8GW" id="0oj-IN-6ZX"/>
-                        <segue destination="bc8-I0-f28" kind="presentation" id="yDa-og-Q57"/>
+                        <segue destination="bc8-I0-f28" kind="presentation" identifier="navigateAlbumInfo" id="yDa-og-Q57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ez9-KF-eNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -251,7 +254,7 @@
         <!--About-->
         <scene sceneID="raa-gS-543">
             <objects>
-                <viewController title="About" id="bc8-I0-f28" sceneMemberID="viewController">
+                <viewController title="About" id="bc8-I0-f28" customClass="AlbumInfoViewController" customModule="Music_Service" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QRk-In-hJw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,11 +331,23 @@ Blue Madonna was officially released on January 12, 2018.</string>
                             <constraint firstItem="rJ1-Nh-EUD" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="yt0-ng-QiN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="About" id="MOQ-Rp-fSO">
+                    <navigationItem key="navigationItem" title="About" id="MOQ-Rp-fSO" customClass="Album">
                         <barButtonItem key="backBarButtonItem" title="Close" id="HcD-76-tq9"/>
-                        <barButtonItem key="rightBarButtonItem" image="chevron.compact.down" catalog="system" id="8Z1-8A-gvf"/>
+                        <barButtonItem key="rightBarButtonItem" image="chevron.compact.down" catalog="system" id="8Z1-8A-gvf">
+                            <connections>
+                                <action selector="dismissButton:" destination="bc8-I0-f28" id="sPD-Ev-f6p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="albumArtist" destination="rJ1-Nh-EUD" id="bRI-X6-vwe"/>
+                        <outlet property="albumCover" destination="5xn-gl-GPv" id="fyK-nE-COp"/>
+                        <outlet property="albumDuration" destination="zyU-5R-Vd1" id="AZx-HD-DZk"/>
+                        <outlet property="albumReleaseDate" destination="YD6-IS-HUI" id="aV1-c3-pM8"/>
+                        <outlet property="albumTitle" destination="vhz-Ea-LD0" id="CKu-eB-YGl"/>
+                        <outlet property="detailText" destination="39Q-gf-1mp" id="uyh-eq-0qt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVD-Pj-uZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var collection: MusicCollection?
         
@@ -20,6 +20,9 @@ class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var albumReleaseDateLabel: UILabel!
     @IBOutlet weak var albumCover: UIImageView!
     
+    @IBAction func infoButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "navigateAlbumInfo", sender: nil)
+    }
     
     override func viewDidLoad() {
                 
@@ -37,8 +40,10 @@ class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSo
         albumCover.image = UIImage(named: collection?.id ?? "")
         
         let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
         
         albumReleaseDateLabel.text = "Released \(dateFormatter.string(from: collection?.referenceDate ?? Date()))"
+        
         albumSongsNumberLabel.text = "\(collection?.musics.count ?? 0) songs"
         albumTitleLabel.text = collection?.title
         
@@ -51,7 +56,7 @@ class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "album_playlist_detail-item", for: indexPath) as! Album_Playlist_Details_TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "album_playlist_detail-item", for: indexPath) as! AlbumPlaylistDetailsTableViewCell
         
         let musicItem = collection!.musics[indexPath.row]
         
@@ -65,5 +70,17 @@ class Album_Playlist_Details_ViewController: UIViewController, UITableViewDataSo
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nextViewController = segue.destination as? AlbumInfoViewController
+                        
+        nextViewController?.collection = collection
+
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
 
 }

@@ -54,7 +54,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let nextViewController = segue.destination as? Album_Playlist_Details_ViewController
+        let nextViewController = segue.destination as? AlbumPlaylistDetailsViewController
         
         let index = sender as? Int
         
