@@ -20,6 +20,8 @@ class AlbumPlaylistDetailsTableViewCell: UITableViewCell {
     
     weak var favoriteDelegate: FavoriteDelegate?
     
+    
+    
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var albumArtist: UILabel!
