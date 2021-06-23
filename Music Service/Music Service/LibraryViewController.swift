@@ -60,8 +60,10 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let musicitem = collections[index ?? 0]
         
-        nextViewController?.collection = musicitem
+        nextViewController?.musicCollection = musicitem
 
+        nextViewController?.musicService = musicService
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

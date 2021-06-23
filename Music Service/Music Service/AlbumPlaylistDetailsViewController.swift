@@ -7,9 +7,21 @@
 
 import UIKit
 
-class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FavoriteDelegate {
     
-    var collection: MusicCollection?
+    func didTapButton(button: UIButton) {
+        
+        guard let musicCollection = musicCollection
+        else {return}
+        
+        self.musicCollection = musicService?.getCollection(id: musicCollection.id)
+        
+        albumSongsTableView.reloadData()
+    }
+    
+    
+    var musicCollection: MusicCollection?
+    var musicService: MusicService?
         
     @IBOutlet weak var albumSongsTableView: UITableView!
     @IBOutlet var infoButton: UIBarButtonItem!
@@ -28,43 +40,58 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
                 
         super.viewDidLoad()
         
-        if collection?.type == .playlist {
+        if musicCollection?.type == .playlist {
             self.navigationItem.rightBarButtonItem = nil
         }
         
         
         albumSongsTableView.dataSource = self
         albumSongsTableView.delegate = self
-        self.navigationItem.title = collection?.title
-        albumArtistLabel.text = collection?.mainPerson
-        albumCover.image = UIImage(named: collection?.id ?? "")
+        self.navigationItem.title = musicCollection?.title
+        albumArtistLabel.text = musicCollection?.mainPerson
+        albumCover.image = UIImage(named: musicCollection?.id ?? "")
         
         let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
         
-        albumReleaseDateLabel.text = "Released \(dateFormatter.string(from: collection?.referenceDate ?? Date()))"
+        albumReleaseDateLabel.text = "Released \(dateFormatter.string(from: musicCollection?.referenceDate ?? Date()))"
         
-        albumSongsNumberLabel.text = "\(collection?.musics.count ?? 0) songs"
-        albumTitleLabel.text = collection?.title
+        albumSongsNumberLabel.text = "\(musicCollection?.musics.count ?? 0) songs"
+        albumTitleLabel.text = musicCollection?.title
         
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collection!.musics.count
+        return musicCollection!.musics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "album_playlist_detail-item", for: indexPath) as! AlbumPlaylistDetailsTableViewCell
         
-        let musicItem = collection!.musics[indexPath.row]
+        let musicItem = musicCollection!.musics[indexPath.row]
         
         cell.songTitle.text = musicItem.title
         cell.albumArtist.text = "\(musicItem.artist)"
             
+        cell.favoriteDelegate = self
         
         cell.albumCover.image = UIImage(named: musicItem.id)
+        
+        cell.collections = musicService
+        
+        cell.music = musicItem
+        
+        let isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
+        
+        let imageName = isFavorite ? "heart.fill" : "heart"
+        
+        let favoriteImage = UIImage(systemName: imageName)
+        
+        cell.favoriteButton.setImage(favoriteImage, for: .normal)
+        
+        cell.favoriteButton.tintColor = isFavorite ? .red : .black
         
         // BOTAO AQUI
         
@@ -73,9 +100,11 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let nextViewController = segue.destination as? AlbumInfoViewController
+        let destination = segue.destination as? UINavigationController
+        
+        let nextViewController = destination?.viewControllers.first as? AlbumInfoViewController
                         
-        nextViewController?.collection = collection
+        nextViewController?.collection = musicCollection
 
     }
     
