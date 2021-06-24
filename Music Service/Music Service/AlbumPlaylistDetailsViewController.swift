@@ -104,7 +104,7 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
         
         let nextViewController = destination?.viewControllers.first as? AlbumInfoViewController
                         
-        nextViewController?.collection = musicCollection
+        nextViewController?.musicCollection = musicCollection
 
     }
     
