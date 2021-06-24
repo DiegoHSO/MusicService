@@ -7,49 +7,74 @@
 
 import UIKit
 
-class AlbumInfoViewController: UIViewController {
+class AlbumInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var collection: MusicCollection?
-
-    @IBOutlet weak var albumCover: UIImageView!
-    @IBOutlet weak var albumTitle: UILabel!
-    @IBOutlet weak var albumArtist: UILabel!
-    @IBOutlet weak var albumDuration: UILabel!
-    @IBOutlet weak var albumReleaseDate: UILabel!
+//    private var musicService: MusicService?
+    var musicCollection: MusicCollection?
+        
+    @IBOutlet weak var albumInfoTableView: UITableView!
     
-    @IBOutlet weak var detailText: UILabel!
-    
-    @IBAction func dismissButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+    @IBAction func dismissAction(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        albumArtist.text = collection?.mainPerson
-        albumCover.image = UIImage(named: collection?.id ?? "")
+        albumInfoTableView.rowHeight = UITableView.automaticDimension
+        albumInfoTableView.estimatedRowHeight = 700
         
-        let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
+        albumInfoTableView.dataSource = self
+        albumInfoTableView.delegate = self
         
-        albumReleaseDate.text = "Released \(dateFormatter.string(from: collection?.referenceDate ?? Date()))"
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "about", for: indexPath) as! AlbumInfoViewTableViewCell
+                
+        cell.albumCover.image = UIImage(named: musicCollection?.id ?? "")
         
+        cell.albumTitle.text = musicCollection?.title ?? ""
+        
+        cell.albumArtist.text = "Album by \(musicCollection?.mainPerson ?? "")"
+
         var duration: TimeInterval = 0.0
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         formatter.zeroFormattingBehavior = .dropAll
-        
         formatter.allowedUnits = [.hour, .minute, .second]
-        
-        for music in collection!.musics {
+
+        for music in musicCollection!.musics {
             duration += music.length
         }
         
-        albumDuration.text = "\(collection?.musics.count ?? 0) songs, \(formatter.string(from: duration)!)"
+        cell.albumDuration.text = "\(musicCollection?.musics.count ?? 0) songs, \(formatter.string(from: duration) ?? "")"
         
-        albumTitle.text = collection?.title
         
-        detailText.text = collection?.albumDescription
+        let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+        
+        cell.albumReleaseDate.text = "Released \(dateFormatter.string(from: musicCollection?.referenceDate ?? Date()))"
+        
+        cell.detailText.text = musicCollection?.albumDescription
+        
+        return cell
+    }
+    
+    
+    var collection: MusicCollection?
+
+    @IBAction func dismissButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 
 }

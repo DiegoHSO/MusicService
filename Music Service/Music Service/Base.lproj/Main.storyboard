@@ -258,96 +258,106 @@
             <objects>
                 <viewController title="About" id="bc8-I0-f28" customClass="AlbumInfoViewController" customModule="Music_Service" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QRk-In-hJw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released in Feb 20th, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD6-IS-HUI">
-                                <rect key="frame" x="16" y="333.5" width="250" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhz-Ea-LD0">
-                                <rect key="frame" x="16" y="249" width="250" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album by The Weeknd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJ1-Nh-EUD">
-                                <rect key="frame" x="16" y="290.5" width="250" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 songs, 35min 16s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-5R-Vd1">
-                                <rect key="frame" x="16" y="315.5" width="250" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39Q-gf-1mp">
-                                <rect key="frame" x="16" y="371.5" width="382" height="730.5"/>
-                                <string key="text">Blue Madonna is the second studio album by American musician Børns. It was released on January 12, 2018 through Interscope Records.
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="R4q-oc-Mxf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="about" rowHeight="737" id="v8g-Pq-xxF" customClass="AlbumInfoViewTableViewCell" customModule="Music_Service" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="737"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v8g-Pq-xxF" id="4bc-IH-KPw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="737"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XrW-zm-991">
+                                                    <rect key="frame" x="16" y="16" width="382" height="705"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0329cf1fa404f40b5159" translatesAutoresizingMaskIntoConstraints="NO" id="zZr-Nd-paQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="171" height="171"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="171" id="THM-Yu-9Eb"/>
+                                                                <constraint firstAttribute="height" constant="171" id="Z8i-2X-55R"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-kd-GqE">
+                                                            <rect key="frame" x="0.0" y="179" width="147" height="33.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album by The Weeknd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hD-it-qTA">
+                                                            <rect key="frame" x="0.0" y="220.5" width="175.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 songs, 35min 16s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46k-0k-6ZY">
+                                                            <rect key="frame" x="0.0" y="249" width="133.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released in Feb 20th, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhT-Dy-LH6">
+                                                            <rect key="frame" x="0.0" y="275" width="186.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDC-13-Zx2">
+                                                            <rect key="frame" x="0.0" y="301" width="382" height="404"/>
+                                                            <string key="text">Blue Madonna is the second studio album by American musician Børns. It was released on January 12, 2018 through Interscope Records.
 
-On July 28, 2017, Børns released the single "Faded Heart" on Interscope Records. On September 29, 2017, he released his next single, "Sweet Dreams". Two promotional videos, "The Search for the Lost Sounds" and "The Faded Heart Sessions", were released on his YouTube channel along with the singles.
-
-The album was announced via Instagram on December 4, 2017. A pre-order on blue vinyl (1,500 copies) was available on the Urban Outfitters website in December, 2017, but the limited-edition sale was removed before its official release on January 12, 2018.
-
-"Faded Heart", "Sweet Dreams", I Don't Want U Back" and "God Save Our Young Blood" featuring Lana Del Rey were released as singles prior to the official album release.
-
-The official lyrics to "Supernatural" released the day prior as bonus material for Spotify users who pre-saved the album. Additionally, Børns, using an account on Genius.com, has taken to leaving personal commentaries regarding written lyrics on certain songs appearing on the album.[7] For example, Børns says, "I pictured Lou Reed when I wrote this singing about being a glowing star with a fragile heart," about his song "Faded Heart".
-
-Blue Madonna was officially released on January 12, 2018.</string>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0329cf1fa404f40b5159" translatesAutoresizingMaskIntoConstraints="NO" id="5xn-gl-GPv">
-                                <rect key="frame" x="16" y="70" width="171" height="171"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="btG-Jk-1b6"/>
-                                    <constraint firstAttribute="height" constant="171" id="vU3-Z7-4Ay"/>
-                                </constraints>
-                            </imageView>
+On July 28, 2017, Børns released the single "Faded Heart" on Interscope Records. On September 29, 2017, he released his next single, "Sweet Dreams". Two promotional videos, "The Search for the Lost Sounds" and "The Faded Heart Sessions", were released on his YouTube channel along with the singles.</string>
+                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="XrW-zm-991" secondAttribute="bottom" constant="16" id="0tJ-Zw-oVI"/>
+                                                <constraint firstItem="XrW-zm-991" firstAttribute="top" secondItem="4bc-IH-KPw" secondAttribute="top" constant="16" id="5li-bx-Z5F"/>
+                                                <constraint firstAttribute="trailing" secondItem="XrW-zm-991" secondAttribute="trailing" constant="16" id="IpP-hV-TVd"/>
+                                                <constraint firstItem="XrW-zm-991" firstAttribute="leading" secondItem="4bc-IH-KPw" secondAttribute="leading" constant="16" id="U9U-RA-0nv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumArtist" destination="4hD-it-qTA" id="nYI-K7-c1c"/>
+                                            <outlet property="albumCover" destination="zZr-Nd-paQ" id="fVD-d4-3QF"/>
+                                            <outlet property="albumDuration" destination="46k-0k-6ZY" id="mKH-Qf-IxL"/>
+                                            <outlet property="albumReleaseDate" destination="AhT-Dy-LH6" id="1bM-gh-WiV"/>
+                                            <outlet property="albumTitle" destination="g0n-kd-GqE" id="CFK-rH-ejr"/>
+                                            <outlet property="detailText" destination="wDC-13-Zx2" id="h0V-hT-fDq"/>
+                                            <outlet property="stackView" destination="XrW-zm-991" id="g8t-rK-Glv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lC7-6j-zza"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="39Q-gf-1mp" secondAttribute="trailing" constant="16" id="9zY-qz-2YK"/>
-                            <constraint firstItem="YD6-IS-HUI" firstAttribute="top" secondItem="zyU-5R-Vd1" secondAttribute="bottom" id="CuD-y0-ky5"/>
-                            <constraint firstItem="39Q-gf-1mp" firstAttribute="top" secondItem="YD6-IS-HUI" secondAttribute="bottom" constant="20" id="Dx4-WF-cLU"/>
-                            <constraint firstItem="rJ1-Nh-EUD" firstAttribute="top" secondItem="vhz-Ea-LD0" secondAttribute="bottom" constant="8" id="KcK-3s-eB4"/>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="5xn-gl-GPv" secondAttribute="trailing" constant="227" id="MIg-2k-NIX"/>
-                            <constraint firstItem="vhz-Ea-LD0" firstAttribute="top" secondItem="5xn-gl-GPv" secondAttribute="bottom" constant="8" id="NhG-XD-4Fe"/>
-                            <constraint firstItem="5xn-gl-GPv" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="Uof-P9-fRx"/>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="zyU-5R-Vd1" secondAttribute="trailing" constant="148" id="W0X-Mi-mTO"/>
-                            <constraint firstItem="vhz-Ea-LD0" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="ZFR-7t-8UR"/>
-                            <constraint firstItem="zyU-5R-Vd1" firstAttribute="top" secondItem="rJ1-Nh-EUD" secondAttribute="bottom" constant="4" id="Zju-dK-ism"/>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="rJ1-Nh-EUD" secondAttribute="trailing" constant="148" id="e4s-C1-TZv"/>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="vhz-Ea-LD0" secondAttribute="trailing" constant="148" id="gsN-Q4-d4h"/>
-                            <constraint firstItem="lC7-6j-zza" firstAttribute="trailing" secondItem="YD6-IS-HUI" secondAttribute="trailing" constant="148" id="nVV-n8-SID"/>
-                            <constraint firstItem="YD6-IS-HUI" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="rdl-VS-HY8"/>
-                            <constraint firstItem="39Q-gf-1mp" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="tTW-hc-o5S"/>
-                            <constraint firstItem="zyU-5R-Vd1" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="wAX-ZP-e7f"/>
-                            <constraint firstItem="5xn-gl-GPv" firstAttribute="top" secondItem="lC7-6j-zza" secondAttribute="top" constant="14" id="wc8-ID-Ru0"/>
-                            <constraint firstItem="rJ1-Nh-EUD" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" constant="16" id="yt0-ng-QiN"/>
+                            <constraint firstItem="R4q-oc-Mxf" firstAttribute="leading" secondItem="lC7-6j-zza" secondAttribute="leading" id="1mD-Fv-8je"/>
+                            <constraint firstItem="R4q-oc-Mxf" firstAttribute="trailing" secondItem="lC7-6j-zza" secondAttribute="trailing" id="Qel-r1-MIU"/>
+                            <constraint firstItem="R4q-oc-Mxf" firstAttribute="top" secondItem="lC7-6j-zza" secondAttribute="top" id="hkc-un-FaC"/>
+                            <constraint firstAttribute="bottom" secondItem="R4q-oc-Mxf" secondAttribute="bottom" id="uNm-dJ-JYk"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="About" id="d2H-Pk-Nq2">
                         <barButtonItem key="rightBarButtonItem" image="chevron.compact.down" catalog="system" id="0Tw-rb-few">
                             <connections>
-                                <action selector="dismissButton:" destination="bc8-I0-f28" id="4C1-Gf-AvF"/>
+                                <action selector="dismissAction:" destination="bc8-I0-f28" id="Exc-A3-qW4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="albumArtist" destination="rJ1-Nh-EUD" id="bRI-X6-vwe"/>
-                        <outlet property="albumCover" destination="5xn-gl-GPv" id="fyK-nE-COp"/>
-                        <outlet property="albumDuration" destination="zyU-5R-Vd1" id="AZx-HD-DZk"/>
-                        <outlet property="albumReleaseDate" destination="YD6-IS-HUI" id="aV1-c3-pM8"/>
-                        <outlet property="albumTitle" destination="vhz-Ea-LD0" id="CKu-eB-YGl"/>
-                        <outlet property="detailText" destination="39Q-gf-1mp" id="uyh-eq-0qt"/>
+                        <outlet property="albumInfoTableView" destination="R4q-oc-Mxf" id="HF1-CL-fIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVD-Pj-uZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -14,7 +14,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     // cell ID: library-detail
     
     private var musicService: MusicService?
-    private var collections: [MusicCollection] = []
+    private var musicCollection: [MusicCollection] = []
     
     @IBOutlet weak var libraryTableView: UITableView!
     
@@ -23,7 +23,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
                 
         do {
             self.musicService = try MusicService()
-            self.collections = musicService?.loadLibrary() ?? []
+            self.musicCollection = musicService?.loadLibrary() ?? []
         } catch {
             print(error)
         }
@@ -33,14 +33,14 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collections.count
+        return musicCollection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "library-detail", for: indexPath) as! LibraryTableViewCell
         
-        let musicItem = collections[indexPath.row]
+        let musicItem = musicCollection[indexPath.row]
         
         cell.songLabel.text = musicItem.title
         cell.songDetailLabel.text = musicItem.type == .album ?
@@ -58,7 +58,7 @@ class LibraryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let index = sender as? Int
         
-        let musicitem = collections[index ?? 0]
+        let musicitem = musicCollection[index ?? 0]
         
         nextViewController?.musicCollection = musicitem
 
