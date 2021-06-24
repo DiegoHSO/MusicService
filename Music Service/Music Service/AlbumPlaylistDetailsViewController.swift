@@ -92,6 +92,7 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
         
         cell.music = musicItem
         
+        
         let isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
         
         let imageName = isFavorite ? "heart.fill" : "heart"
@@ -107,18 +108,29 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let musicItem = musicCollection!.musics[indexPath.row]
+            performSegue(withIdentifier: "navigatePlaying", sender: musicItem)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destination = segue.destination as? UINavigationController
         
-        let nextViewController = destination?.viewControllers.first as? AlbumInfoViewController
-                        
-        nextViewController?.musicCollection = musicCollection
+        let albumInfoViewController = destination?.viewControllers.first as? AlbumInfoViewController
+        
+        albumInfoViewController?.musicCollection = musicCollection
 
+        let playingViewController = destination?.viewControllers.first as? PlayingViewController
+        
+        guard let musicItem = sender as? Music else {
+            return
+        }
+        
+        playingViewController?.music = musicItem
+        playingViewController?.isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//    }
+
 
 }
