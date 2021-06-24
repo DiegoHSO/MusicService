@@ -79,6 +79,34 @@ class FavoriteSongsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if musicService?.favoriteMusics.isEmpty ?? false {
+            return tableView.frame.height
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let musicItem = favoriteSongs?[indexPath.row] else {
+            return
+        }
+            performSegue(withIdentifier: "navigatePlayingFavorites", sender: musicItem)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let musicItem = sender as? Music else {
+            return
+        }
+        
+        let destination = segue.destination as? UINavigationController
+        let playingViewController = destination?.viewControllers.first as? PlayingViewController
+        // playingViewController?.music = musicItem
+        // playingViewController?.collections = musicService
+        playingViewController?.isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
+    }
+    
     /*
     // MARK: - Navigation
 
