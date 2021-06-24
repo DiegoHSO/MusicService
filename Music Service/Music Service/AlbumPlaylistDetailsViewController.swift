@@ -115,22 +115,20 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destination as? UINavigationController
-        
-        let albumInfoViewController = destination?.viewControllers.first as? AlbumInfoViewController
-        
-        albumInfoViewController?.musicCollection = musicCollection
-
-        let playingViewController = destination?.viewControllers.first as? PlayingViewController
-        
         guard let musicItem = sender as? Music else {
+            let destination = segue.destination as? UINavigationController
+            
+            let albumInfoViewController = destination?.viewControllers.first as? AlbumInfoViewController
+            albumInfoViewController?.musicCollection = musicCollection
             return
         }
         
+        let destination = segue.destination as? UINavigationController
+        let playingViewController = destination?.viewControllers.first as? PlayingViewController
         playingViewController?.music = musicItem
+        playingViewController?.collections = musicService
         playingViewController?.isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
     }
-    
 
 
 }

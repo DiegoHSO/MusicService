@@ -31,7 +31,7 @@ class PlayingViewController: UIViewController {
     IBOutlet weak var playSongLabel: UIButton!
     @IBAction func playSong(_ sender: UIButton) {
         isPlaying.toggle()
-        let imageName = isPlaying ? "play.circle.fill" : "pause.circle.fill"
+        let imageName = isPlaying ? "pause.circle.fill" : "play.circle.fill"
         let favoriteImage = UIImage(systemName: imageName)
         playSongLabel.setImage(favoriteImage, for: .normal)
     }

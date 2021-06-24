@@ -14,6 +14,7 @@
 		F13CD7102683BF8E00AC0157 /* FavoriteSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CD70F2683BF8E00AC0157 /* FavoriteSongsViewController.swift */; };
 		F13CD7122683C30D00AC0157 /* NoFavoriteSongsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CD7112683C30D00AC0157 /* NoFavoriteSongsTableViewCell.swift */; };
 		F1A12CEC268506040050F0A6 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A12CEB268506040050F0A6 /* PlayingViewController.swift */; };
+		F1A12CEE26853C390050F0A6 /* AboutArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A12CED26853C390050F0A6 /* AboutArtistTableViewCell.swift */; };
 		F1F7FB07267C3340000CC558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB06267C3340000CC558 /* AppDelegate.swift */; };
 		F1F7FB09267C3340000CC558 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB08267C3340000CC558 /* SceneDelegate.swift */; };
 		F1F7FB0B267C3340000CC558 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7FB0A267C3340000CC558 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		F13CD70F2683BF8E00AC0157 /* FavoriteSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongsViewController.swift; sourceTree = "<group>"; };
 		F13CD7112683C30D00AC0157 /* NoFavoriteSongsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoriteSongsTableViewCell.swift; sourceTree = "<group>"; };
 		F1A12CEB268506040050F0A6 /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
+		F1A12CED26853C390050F0A6 /* AboutArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutArtistTableViewCell.swift; sourceTree = "<group>"; };
 		F1F7FB03267C3340000CC558 /* Music Service.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Service.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F7FB06267C3340000CC558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1F7FB08267C3340000CC558 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		F1F7FB05267C3340000CC558 /* Music Service */ = {
 			isa = PBXGroup;
 			children = (
+				F1A12CED26853C390050F0A6 /* AboutArtistTableViewCell.swift */,
 				F1F7FB06267C3340000CC558 /* AppDelegate.swift */,
 				F1F7FB08267C3340000CC558 /* SceneDelegate.swift */,
 				F1F7FB0A267C3340000CC558 /* ViewController.swift */,
@@ -181,6 +184,7 @@
 				5C4514F426812147004808BA /* AlbumPlaylistDetailsViewController.swift in Sources */,
 				F1F7FB09267C3340000CC558 /* SceneDelegate.swift in Sources */,
 				F13CD7102683BF8E00AC0157 /* FavoriteSongsViewController.swift in Sources */,
+				F1A12CEE26853C390050F0A6 /* AboutArtistTableViewCell.swift in Sources */,
 				F1A12CEC268506040050F0A6 /* PlayingViewController.swift in Sources */,
 				F1F7FB1B267C38D1000CC558 /* MusicService.swift in Sources */,
 				F1F7FB212680FDE9000CC558 /* LibraryTableViewCell.swift in Sources */,
