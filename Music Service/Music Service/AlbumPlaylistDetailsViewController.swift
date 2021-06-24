@@ -36,6 +36,15 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
         performSegue(withIdentifier: "navigateAlbumInfo", sender: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        guard let musicCollection = musicCollection
+        else {return}
+        
+        self.musicCollection = musicService?.getCollection(id: musicCollection.id)
+        
+        albumSongsTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
                 
         super.viewDidLoad()
@@ -91,7 +100,7 @@ class AlbumPlaylistDetailsViewController: UIViewController, UITableViewDataSourc
         
         cell.favoriteButton.setImage(favoriteImage, for: .normal)
         
-        cell.favoriteButton.tintColor = isFavorite ? .red : .black
+        cell.favoriteButton.tintColor = isFavorite ? .systemPink : .black
         
         // BOTAO AQUI
         

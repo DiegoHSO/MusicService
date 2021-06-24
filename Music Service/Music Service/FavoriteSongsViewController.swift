@@ -10,48 +10,44 @@ import UIKit
 class FavoriteSongsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FavoriteDelegate {
     func didTapButton(button: UIButton) {
         
-        guard let musicCollection = musicCollection
-        else {return}
-        
-        self.musicCollection = musicService?.getCollection(id: musicCollection.id)
-        
+        self.favoriteSongs = musicService?.favoriteMusics
         favoriteSongsTableView.reloadData()
     }
     
-    
-    var musicCollection: MusicCollection?
+    var favoriteSongs: [Music]?
     var musicService: MusicService?
     
     @IBOutlet weak var favoriteSongsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        do {
+            self.musicService = try MusicService()
+            self.favoriteSongs = musicService?.favoriteMusics
+        } catch {
+            print(error)
+        }
         favoriteSongsTableView.dataSource = self
         favoriteSongsTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard let musicCollection = musicCollection
-        else {return}
-        
-        self.musicCollection = musicService?.getCollection(id: musicCollection.id)
+        self.favoriteSongs = musicService?.favoriteMusics
         
         favoriteSongsTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return musicService?.favoriteMusics.count ?? 0
+        return musicService?.favoriteMusics.count == 0 ? 1 : musicService?.favoriteMusics.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let thereIsFavoriteSongs = (musicService?.favoriteMusics.isEmpty)!
         
-        if (thereIsFavoriteSongs) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: thereIsFavoriteSongs ? "album_playlist_detail-item" : "no-favorites", for: indexPath) as! AlbumPlaylistDetailsTableViewCell
+        if (!(musicService?.favoriteMusics.isEmpty)!) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "album_playlist_detail-item", for: indexPath) as! AlbumPlaylistDetailsTableViewCell
             
-            let musicItem = musicCollection!.musics[indexPath.row]
+            let musicItem = favoriteSongs![indexPath.row]
             
             cell.songTitle.text = musicItem.title
             cell.albumArtist.text = "\(musicItem.artist)"
@@ -64,22 +60,21 @@ class FavoriteSongsViewController: UIViewController, UITableViewDataSource, UITa
             
             cell.music = musicItem
             
-            let isFavorite = musicService?.favoriteMusics.contains(musicItem) ?? false
+            cell.isFavorite = true
             
-            let imageName = isFavorite ? "heart.fill" : "heart"
+            let imageName = "heart.fill"
             
             let favoriteImage = UIImage(systemName: imageName)
             
             cell.favoriteButton.setImage(favoriteImage, for: .normal)
             
-            cell.favoriteButton.tintColor = isFavorite ? .red : .black
+            cell.favoriteButton.tintColor = .systemPink
             
             return cell
         }
         
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: thereIsFavoriteSongs ? "album_playlist_detail-item" : "no-favorites", for: indexPath) as! NoFavoriteSongsTableViewCell
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "no-favorites", for: indexPath) as! NoFavoriteSongsTableViewCell
             return cell
         }
     }
