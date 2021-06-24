@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -118,6 +119,7 @@
                                                         <constraint firstAttribute="width" constant="58" id="3sZ-9G-YA5"/>
                                                     </constraints>
                                                     <color key="tintColor" systemColor="labelColor"/>
+                                                    <state key="normal" image="heart" catalog="system"/>
                                                     <connections>
                                                         <action selector="favoriteButtonAction:" destination="asJ-me-PBM" eventType="touchUpInside" id="nqa-rZ-Q7R"/>
                                                     </connections>
@@ -163,6 +165,7 @@
                                             <outlet property="albumCover" destination="HbS-OT-WZi" id="xyO-ox-v08"/>
                                             <outlet property="favoriteButton" destination="Iuo-n4-dn4" id="1rT-us-ac7"/>
                                             <outlet property="songTitle" destination="stI-CE-MNO" id="3ul-xK-pPE"/>
+                                            <segue destination="evU-z1-ETW" kind="presentation" identifier="navigatePlaying" id="C0b-SX-3g6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -243,7 +246,140 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ez9-KF-eNd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1515.9420289855075" y="562.5"/>
+            <point key="canvasLocation" x="1532" y="563"/>
+        </scene>
+        <!--Playing-->
+        <scene sceneID="60l-np-wuS">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXB-Hh-ZE5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Playing" id="pMd-Um-EvQ" customClass="PlayingViewController" customModule="Music_Service" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YsV-Wv-EdE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="246" verticalHuggingPriority="248" horizontalCompressionResistancePriority="748" image="7b4b11ae9f12f3b52e1a" translatesAutoresizingMaskIntoConstraints="NO" id="f98-Ru-aAk">
+                                <rect key="frame" x="20" y="106" width="374" height="366.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Blinding Lights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiz-vR-jmE">
+                                <rect key="frame" x="20" y="538.5" width="338.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="The Weeknd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMZ-Mk-0YN">
+                                <rect key="frame" x="20" y="580" width="338.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ral-OP-PVG">
+                                <rect key="frame" x="61" y="713" width="62" height="51"/>
+                                <color key="tintColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="backward.end.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="songBackward:" destination="pMd-Um-EvQ" eventType="touchUpInside" id="uxo-6N-tY4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NF-W8-0Xk">
+                                <rect key="frame" x="287" y="713" width="66" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                <color key="tintColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="forward.end.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="songForward:" destination="pMd-Um-EvQ" eventType="touchUpInside" id="U4e-Ac-wXR"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="S20-mU-dC8">
+                                <rect key="frame" x="20" y="622" width="374" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKA-WK-MnY">
+                                <rect key="frame" x="20" y="629" width="50.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-wo-gI2">
+                                <rect key="frame" x="358.5" y="629" width="35.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-lz-7Me">
+                                <rect key="frame" x="368.5" y="554.5" width="25.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoriteButtonAction:" destination="pMd-Um-EvQ" eventType="touchUpInside" id="4By-nV-cHR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKz-cD-A1k">
+                                <rect key="frame" x="158" y="696" width="94" height="82"/>
+                                <state key="normal" image="pause.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="72"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSong:" destination="pMd-Um-EvQ" eventType="touchUpInside" id="wVE-bD-Aam"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="voN-K2-ysq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tDz-wo-gI2" firstAttribute="top" secondItem="S20-mU-dC8" secondAttribute="bottom" constant="3" id="1jC-8V-Tn2"/>
+                            <constraint firstItem="ral-OP-PVG" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="61" id="2oK-rV-UbR"/>
+                            <constraint firstItem="tDz-wo-gI2" firstAttribute="leading" secondItem="OKA-WK-MnY" secondAttribute="trailing" constant="288" id="6VP-jX-rBF"/>
+                            <constraint firstItem="tDz-wo-gI2" firstAttribute="top" secondItem="S20-mU-dC8" secondAttribute="bottom" constant="3" id="Apu-WP-vnc"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="trailing" secondItem="tDz-wo-gI2" secondAttribute="trailing" constant="20" id="COg-UH-C0Q"/>
+                            <constraint firstItem="OKA-WK-MnY" firstAttribute="top" secondItem="S20-mU-dC8" secondAttribute="bottom" constant="3" id="DZQ-z2-xTX"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="trailing" secondItem="S20-mU-dC8" secondAttribute="trailing" constant="20" id="F67-ea-x0p"/>
+                            <constraint firstItem="1NF-W8-0Xk" firstAttribute="leading" secondItem="nKz-cD-A1k" secondAttribute="trailing" constant="35" id="FuM-eh-KL3"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="trailing" secondItem="f98-Ru-aAk" secondAttribute="trailing" constant="20" id="Hko-6O-3qs"/>
+                            <constraint firstItem="xMZ-Mk-0YN" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="20" id="Jka-HU-c2Y"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="bottom" secondItem="1NF-W8-0Xk" secondAttribute="bottom" constant="44" id="M2Z-kd-K9C"/>
+                            <constraint firstItem="qX9-lz-7Me" firstAttribute="leading" secondItem="xMZ-Mk-0YN" secondAttribute="trailing" constant="10" id="OEN-fl-s1F"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="bottom" secondItem="nKz-cD-A1k" secondAttribute="bottom" constant="30" id="OQ1-Ja-Yss"/>
+                            <constraint firstItem="S20-mU-dC8" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="20" id="OtV-z0-Um8"/>
+                            <constraint firstItem="OKA-WK-MnY" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="20" id="WHy-XG-ZHk"/>
+                            <constraint firstItem="S20-mU-dC8" firstAttribute="top" secondItem="xMZ-Mk-0YN" secondAttribute="bottom" constant="21" id="Xdc-8m-CCX"/>
+                            <constraint firstItem="eiz-vR-jmE" firstAttribute="top" secondItem="f98-Ru-aAk" secondAttribute="bottom" constant="66" id="ZdX-iH-IXx"/>
+                            <constraint firstItem="xMZ-Mk-0YN" firstAttribute="top" secondItem="eiz-vR-jmE" secondAttribute="bottom" constant="8" id="b0S-lc-FMG"/>
+                            <constraint firstItem="f98-Ru-aAk" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="20" id="bm2-53-72H"/>
+                            <constraint firstItem="qX9-lz-7Me" firstAttribute="top" secondItem="f98-Ru-aAk" secondAttribute="bottom" constant="82" id="cR4-Zl-Tyr"/>
+                            <constraint firstItem="nKz-cD-A1k" firstAttribute="leading" secondItem="ral-OP-PVG" secondAttribute="trailing" constant="35" id="dNw-U3-tJh"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="trailing" secondItem="1NF-W8-0Xk" secondAttribute="trailing" constant="61" id="dzZ-nd-5Dy"/>
+                            <constraint firstItem="eiz-vR-jmE" firstAttribute="leading" secondItem="voN-K2-ysq" secondAttribute="leading" constant="20" id="jj8-Pi-at3"/>
+                            <constraint firstItem="qX9-lz-7Me" firstAttribute="leading" secondItem="eiz-vR-jmE" secondAttribute="trailing" constant="10" id="nga-Kj-v26"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="trailing" secondItem="qX9-lz-7Me" secondAttribute="trailing" constant="20" id="sbg-8R-Qzr"/>
+                            <constraint firstItem="ral-OP-PVG" firstAttribute="top" secondItem="OKA-WK-MnY" secondAttribute="bottom" constant="63" id="tam-Ix-i0l"/>
+                            <constraint firstItem="f98-Ru-aAk" firstAttribute="top" secondItem="voN-K2-ysq" secondAttribute="top" constant="50" id="wlQ-2P-yz4"/>
+                            <constraint firstItem="voN-K2-ysq" firstAttribute="bottom" secondItem="ral-OP-PVG" secondAttribute="bottom" constant="44" id="z0B-s4-JAz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Playing" id="9W4-qV-kJl">
+                        <barButtonItem key="rightBarButtonItem" image="list.dash" catalog="system" id="ViS-q2-Qs9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="albumCover" destination="f98-Ru-aAk" id="dnj-TM-v2F"/>
+                        <outlet property="favoriteButtonLabel" destination="qX9-lz-7Me" id="D0K-0b-wP0"/>
+                        <outlet property="leftSongDuration" destination="OKA-WK-MnY" id="igD-uY-ePz"/>
+                        <outlet property="playSongLabel" destination="nKz-cD-A1k" id="xHm-0S-5Yu"/>
+                        <outlet property="rightSongDuration" destination="tDz-wo-gI2" id="yY6-uj-M6T"/>
+                        <outlet property="songArtist" destination="xMZ-Mk-0YN" id="f0f-Yt-Fd4"/>
+                        <outlet property="songProgress" destination="S20-mU-dC8" id="O6f-az-Nxi"/>
+                        <outlet property="songTitle" destination="eiz-vR-jmE" id="FnM-rG-atY"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3519" y="1022"/>
         </scene>
         <!--About-->
         <scene sceneID="raa-gS-543">
@@ -354,7 +490,7 @@ On July 28, 2017, Børns released the single "Faded Heart" on Interscope Records
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVD-Pj-uZ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3366.666666666667" y="562.5"/>
+            <point key="canvasLocation" x="3520" y="267"/>
         </scene>
         <!--Discover-->
         <scene sceneID="NPo-Tq-Mby">
@@ -429,7 +565,7 @@ On July 28, 2017, Børns released the single "Faded Heart" on Interscope Records
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2U-ac-z29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2456.521739130435" y="562.5"/>
+            <point key="canvasLocation" x="2610" y="267"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="1wL-RB-pTC">
@@ -503,6 +639,7 @@ On July 28, 2017, Børns released the single "Faded Heart" on Interscope Records
                                             <outlet property="albumCover" destination="Fby-tj-PV5" id="vsY-Lg-b73"/>
                                             <outlet property="favoriteButton" destination="efI-HK-J2y" id="HEA-77-0tF"/>
                                             <outlet property="songTitle" destination="CyO-UE-kh5" id="6eI-Rx-DKv"/>
+                                            <segue destination="YRe-jq-rWg" kind="presentation" id="xEa-ea-Wvk"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="no-favorites" id="8fL-Aw-BoB" customClass="NoFavoriteSongsTableViewCell" customModule="Music_Service" customModuleProvider="target">
@@ -574,7 +711,7 @@ come back here to access them.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d33-BE-oVV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="1425"/>
+            <point key="canvasLocation" x="603" y="1760"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="mfm-3B-09U">
@@ -594,19 +731,173 @@ come back here to access them.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBG-YF-0rz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-646" y="1425"/>
+            <point key="canvasLocation" x="-646" y="1760"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TsU-q2-WrR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rwq-Sg-Lte" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="evU-z1-ETW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PO9-6m-gQA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pMd-Um-EvQ" kind="relationship" relationship="rootViewController" id="yd9-eF-iFV"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2609" y="1022"/>
+        </scene>
+        <!--Playing-->
+        <scene sceneID="04T-dr-k97">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rs6-A7-ZfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="gOC-hA-SWU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gJK-oT-lXw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="246" verticalHuggingPriority="248" horizontalCompressionResistancePriority="748" image="7b4b11ae9f12f3b52e1a" translatesAutoresizingMaskIntoConstraints="NO" id="Rfw-Xj-Zkx">
+                                <rect key="frame" x="20" y="106" width="374" height="366.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Blinding Lights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmP-tu-Ovj">
+                                <rect key="frame" x="20" y="538.5" width="338.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="The Weeknd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCL-L0-SEB">
+                                <rect key="frame" x="20" y="580" width="338.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USe-Qo-maL">
+                                <rect key="frame" x="61" y="713" width="62" height="51"/>
+                                <color key="tintColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="backward.end.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44" scale="large"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzf-uL-gCd">
+                                <rect key="frame" x="287" y="713" width="66" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                <color key="tintColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="forward.end.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="44" scale="large"/>
+                                </state>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-cF-U63">
+                                <rect key="frame" x="20" y="622" width="374" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apy-8v-e3w">
+                                <rect key="frame" x="20" y="629" width="50.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLn-Hm-VjB">
+                                <rect key="frame" x="358.5" y="629" width="35.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWi-1m-cys">
+                                <rect key="frame" x="368.5" y="554.5" width="25.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QX5-0t-VHL">
+                                <rect key="frame" x="158" y="696" width="94" height="82"/>
+                                <state key="normal" image="pause.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="72"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nfy-Y5-znH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zLn-Hm-VjB" firstAttribute="top" secondItem="g8N-cF-U63" secondAttribute="bottom" constant="3" id="1sH-x0-Wfj"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="trailing" secondItem="zWi-1m-cys" secondAttribute="trailing" constant="20" id="31l-1G-e1B"/>
+                            <constraint firstItem="bmP-tu-Ovj" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="20" id="36K-ym-o5x"/>
+                            <constraint firstItem="g8N-cF-U63" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="20" id="AqO-4N-4e8"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="bottom" secondItem="USe-Qo-maL" secondAttribute="bottom" constant="44" id="Cpx-Zs-eAl"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="bottom" secondItem="tzf-uL-gCd" secondAttribute="bottom" constant="44" id="GHK-V8-qp1"/>
+                            <constraint firstItem="zLn-Hm-VjB" firstAttribute="top" secondItem="g8N-cF-U63" secondAttribute="bottom" constant="3" id="H4b-1M-Q1j"/>
+                            <constraint firstItem="bmP-tu-Ovj" firstAttribute="top" secondItem="Rfw-Xj-Zkx" secondAttribute="bottom" constant="66" id="HdB-wQ-M4x"/>
+                            <constraint firstItem="USe-Qo-maL" firstAttribute="top" secondItem="Apy-8v-e3w" secondAttribute="bottom" constant="63" id="IrA-uy-Fqs"/>
+                            <constraint firstItem="zWi-1m-cys" firstAttribute="top" secondItem="Rfw-Xj-Zkx" secondAttribute="bottom" constant="82" id="KG6-MI-iZW"/>
+                            <constraint firstItem="YCL-L0-SEB" firstAttribute="top" secondItem="bmP-tu-Ovj" secondAttribute="bottom" constant="8" id="Kz2-Ib-cH6"/>
+                            <constraint firstItem="zWi-1m-cys" firstAttribute="leading" secondItem="YCL-L0-SEB" secondAttribute="trailing" constant="10" id="Qh9-mQ-bjg"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="trailing" secondItem="g8N-cF-U63" secondAttribute="trailing" constant="20" id="UKq-Pn-Sk1"/>
+                            <constraint firstItem="zWi-1m-cys" firstAttribute="leading" secondItem="bmP-tu-Ovj" secondAttribute="trailing" constant="10" id="Uyj-qz-srI"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="trailing" secondItem="Rfw-Xj-Zkx" secondAttribute="trailing" constant="20" id="W83-rP-MRh"/>
+                            <constraint firstItem="Apy-8v-e3w" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="20" id="YV4-0Q-ZWV"/>
+                            <constraint firstItem="QX5-0t-VHL" firstAttribute="leading" secondItem="USe-Qo-maL" secondAttribute="trailing" constant="35" id="ZPn-Rg-YDb"/>
+                            <constraint firstItem="Rfw-Xj-Zkx" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="20" id="ZRz-Mg-ujU"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="trailing" secondItem="tzf-uL-gCd" secondAttribute="trailing" constant="61" id="aRJ-ep-uly"/>
+                            <constraint firstItem="tzf-uL-gCd" firstAttribute="leading" secondItem="QX5-0t-VHL" secondAttribute="trailing" constant="35" id="bbN-Hf-PsF"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="bottom" secondItem="QX5-0t-VHL" secondAttribute="bottom" constant="30" id="cZ1-Y6-9Pz"/>
+                            <constraint firstItem="USe-Qo-maL" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="61" id="eCJ-gc-Cki"/>
+                            <constraint firstItem="g8N-cF-U63" firstAttribute="top" secondItem="YCL-L0-SEB" secondAttribute="bottom" constant="21" id="fIZ-iL-PcN"/>
+                            <constraint firstItem="Apy-8v-e3w" firstAttribute="top" secondItem="g8N-cF-U63" secondAttribute="bottom" constant="3" id="neC-S2-Ui2"/>
+                            <constraint firstItem="YCL-L0-SEB" firstAttribute="leading" secondItem="nfy-Y5-znH" secondAttribute="leading" constant="20" id="r6w-Im-CZ1"/>
+                            <constraint firstItem="zLn-Hm-VjB" firstAttribute="leading" secondItem="Apy-8v-e3w" secondAttribute="trailing" constant="288" id="ryo-El-yP5"/>
+                            <constraint firstItem="Rfw-Xj-Zkx" firstAttribute="top" secondItem="nfy-Y5-znH" secondAttribute="top" constant="50" id="vbd-2w-Kgc"/>
+                            <constraint firstItem="nfy-Y5-znH" firstAttribute="trailing" secondItem="zLn-Hm-VjB" secondAttribute="trailing" constant="20" id="xV4-iR-bVI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Playing" id="pxt-t4-00E">
+                        <barButtonItem key="rightBarButtonItem" image="list.dash" catalog="system" id="mc8-Rh-ETK"/>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2939" y="1761"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lc9-35-j5T">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwL-y3-s6l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YRe-jq-rWg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="roF-DB-mYE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gOC-hA-SWU" kind="relationship" relationship="rootViewController" id="zsr-oN-jIX"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2029" y="1761"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemGreenColor"/>
     <resources>
         <image name="0329cf1fa404f40b5159" width="300" height="300"/>
+        <image name="7b4b11ae9f12f3b52e1a" width="300" height="300"/>
+        <image name="backward.end.fill" catalog="system" width="128" height="102"/>
         <image name="book.closed.fill" catalog="system" width="115" height="128"/>
         <image name="chevron.compact.down" catalog="system" width="128" height="43"/>
+        <image name="forward.end.fill" catalog="system" width="128" height="102"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.slash" catalog="system" width="128" height="115"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="pause.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
